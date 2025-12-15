@@ -26,8 +26,11 @@ if username == USERNAME and password == PASSWORD:
 
 else:
     st.warning("Please enter valid credentials")
-
+st.markdown("""
+---
 **RTGS Charges Calculator**  
-Developed by **Prakash Giri KASH BRO**  
-© 2025 15 December
+Developed by **Prakash Giri(KASH-BRO)**  
+© 2025
 """)
+
+
