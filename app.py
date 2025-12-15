@@ -1,9 +1,8 @@
 import streamlit as st
 
-st.set_page_config(page_title="Bank of Bhutan
-RTGS Charge Calculator", layout="centered")
+st.set_page_config(page_title="Bank of Bhutan RTGS Charge Calculator", layout="centered")
 
-st.title("Charge Calculator")
+st.title("Bank of Bhutan RTGS Charge Calculator")
 
 amount = st.number_input("Enter Amount", min_value=0.0, step=1000.0)
 
@@ -21,6 +20,6 @@ if st.button("Calculate"):
 st.markdown("""
 ---
 **RTGS Charges Calculator**  
-Developed by **Prakash Giri**  
+Developed by **Prakash Giri KASH BRO**  
 © 2025
 """)
