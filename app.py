@@ -1,6 +1,7 @@
 import streamlit as st
 
-st.set_page_config(page_title="Charge Calculator", layout="centered")
+st.set_page_config(page_title="Bank of Bhutan
+RTGS Charge Calculator", layout="centered")
 
 st.title("Charge Calculator")
 
