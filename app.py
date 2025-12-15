@@ -117,6 +117,11 @@ def app_page():
         charge = calculate_charge(amount)
         st.success(f"Charge: Nu. {charge:.2f}")
 
+with st.sidebar:
+    st.success("Logged in")
+    if st.button("Logout"):
+        logout()
+
     st.markdown("---")
     st.markdown(
         """
