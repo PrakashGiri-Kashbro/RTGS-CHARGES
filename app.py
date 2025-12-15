@@ -10,7 +10,7 @@ if "logged_in" not in st.session_state:
 if "page" not in st.session_state:
     st.session_state.page = "login"
 
-# Demo user store (for Streamlit Cloud)
+# Demo user store (for Streamlit Cloud demo)
 USERS = {
     "admin": {
         "password": "rtgs123",
@@ -31,7 +31,7 @@ def calculate_charge(amount):
 def logout():
     st.session_state.logged_in = False
     st.session_state.page = "login"
-    st.experimental_rerun()
+    st.rerun()
 
 
 # ---------------- LOGIN PAGE ----------------
@@ -50,20 +50,20 @@ def login_page():
                 st.session_state.logged_in = True
                 st.session_state.page = "app"
                 st.success("Login successful")
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.error("Invalid username or password")
 
     with col2:
         if st.button("New User Registration"):
             st.session_state.page = "register"
-            st.experimental_rerun()
+            st.rerun()
 
 
 # ---------------- REGISTRATION PAGE ----------------
 def register_page():
     st.title("📝 New User Registration")
-    st.info("One-time registration fee: **Nu. 100**")
+    st.info("One-time registration fee: **Nu. 100** (Demo only)")
 
     with st.form("register_form"):
         name = st.text_input("Full Name")
@@ -79,19 +79,17 @@ def register_page():
         elif username in USERS:
             st.error("Username already exists")
         else:
-            # DEMO ONLY (No DB, no payment gateway)
             USERS[username] = {
                 "password": password,
                 "name": name
             }
             st.success("Registration successful (Demo)")
-            st.info("Please login to continue")
             st.session_state.page = "login"
-            st.experimental_rerun()
+            st.rerun()
 
     if st.button("⬅ Back to Login"):
         st.session_state.page = "login"
-        st.experimental_rerun()
+        st.rerun()
 
 
 # ---------------- MAIN APP ----------------
@@ -99,7 +97,7 @@ def app_page():
     st.title("RTGS Charges Calculator")
 
     with st.sidebar:
-        st.success(f"Logged in as: **{list(USERS.keys())[0]}**")
+        st.success("Logged in")
         if st.button("Logout"):
             logout()
 
@@ -129,4 +127,4 @@ elif st.session_state.page == "app" and st.session_state.logged_in:
 
 else:
     st.session_state.page = "login"
-    st.experimental_rerun()
+    st.rerun()
