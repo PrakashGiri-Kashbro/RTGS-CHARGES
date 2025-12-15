@@ -102,10 +102,20 @@ def app_page():
 
     st.title("RTGS Charges Calculator")
 
+    # ✅ SINGLE SIDEBAR (ONLY HERE)
     with st.sidebar:
         st.success("Logged in")
-        if st.button("Logout"):
+        if st.button("Logout", key="logout_btn"):
             logout()
+
+        st.markdown("---")
+        st.markdown(
+            """
+            **RTGS Charges Calculator**  
+            Developed by **Prakash Giri (KASH-BRO)**  
+            © 2025
+            """
+        )
 
     amount = st.number_input(
         "Enter Amount",
@@ -113,23 +123,9 @@ def app_page():
         step=1000.0
     )
 
-    if st.button("Calculate"):
+    if st.button("Calculate", key="calc_btn"):
         charge = calculate_charge(amount)
         st.success(f"Charge: Nu. {charge:.2f}")
-
-with st.sidebar:
-    st.success("Logged in")
-    if st.button("Logout"):
-        logout()
-
-    st.markdown("---")
-    st.markdown(
-        """
-        **RTGS Charges Calculator**  
-        Developed by **Prakash Giri (KASH-BRO)**  
-        © 2025
-        """
-    )
 
 # ---------------- ROUTER ----------------
 if st.session_state.page == "login":
@@ -144,4 +140,3 @@ elif st.session_state.page == "app":
 else:
     st.session_state.page = "login"
     st.rerun()
-    
