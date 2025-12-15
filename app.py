@@ -117,9 +117,9 @@ def app_page():
         charge = calculate_charge(amount)
         st.success(f"Charge: Nu. {charge:.2f}")
 
+    st.markdown("---")
     st.markdown(
         """
-        ---
         **RTGS Charges Calculator**  
         Developed by **Prakash Giri (KASH-BRO)**  
         © 2025
@@ -140,11 +140,3 @@ else:
     st.session_state.page = "login"
     st.rerun()
     
-    st.markdown("---")
-    st.markdown(
-        """
-        **RTGS Charges Calculator**  
-        Developed by **Prakash Giri (KASH-BRO)**  
-        © 2025
-        """
-    )
