@@ -21,5 +21,5 @@ st.markdown("""
 ---
 **RTGS Charges Calculator**  
 Developed by **Prakash Giri KASH BRO**  
-© 2025
+© 2025 15 December
 """)
