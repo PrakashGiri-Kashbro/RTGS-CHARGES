@@ -17,3 +17,9 @@ def calculate_charge(amount):
 if st.button("Calculate"):
     charge = calculate_charge(amount)
     st.success(f"Calculated Charge: Nu. {charge:.2f}")
+st.markdown("""
+---
+**RTGS Charges Calculator**  
+Developed by **Prakash Giri**  
+© 2025
+""")
