@@ -10,7 +10,7 @@ if "logged_in" not in st.session_state:
 if "page" not in st.session_state:
     st.session_state.page = "login"
 
-# Demo user store (for Streamlit Cloud demo)
+# Demo user store
 USERS = {
     "admin": {
         "password": "rtgs123",
@@ -28,11 +28,17 @@ def calculate_charge(amount):
         return amount * 0.0019960091082926
 
 
+def force_login():
+    """Hard stop if user is not logged in"""
+    if not st.session_state.logged_in:
+        st.session_state.page = "login"
+        st.rerun()
+
+
 def logout():
     st.session_state.logged_in = False
     st.session_state.page = "login"
     st.rerun()
-
 
 # ---------------- LOGIN PAGE ----------------
 def login_page():
@@ -45,86 +51,4 @@ def login_page():
     col1, col2 = st.columns(2)
 
     with col1:
-        if st.button("Login"):
-            if username in USERS and USERS[username]["password"] == password:
-                st.session_state.logged_in = True
-                st.session_state.page = "app"
-                st.success("Login successful")
-                st.rerun()
-            else:
-                st.error("Invalid username or password")
-
-    with col2:
-        if st.button("New User Registration"):
-            st.session_state.page = "register"
-            st.rerun()
-
-
-# ---------------- REGISTRATION PAGE ----------------
-def register_page():
-    st.title("📝 New User Registration")
-    st.info("One-time registration fee: **Nu. 100** (Demo only)")
-
-    with st.form("register_form"):
-        name = st.text_input("Full Name")
-        username = st.text_input("Choose Username")
-        password = st.text_input("Choose Password", type="password")
-        cic = st.text_input("Citizen Identity Card (CIC) Number", max_chars=12)
-
-        submit = st.form_submit_button("Register")
-
-    if submit:
-        if not all([name, username, password, cic]):
-            st.error("All fields are required")
-        elif username in USERS:
-            st.error("Username already exists")
-        else:
-            USERS[username] = {
-                "password": password,
-                "name": name
-            }
-            st.success("Registration successful (Demo)")
-            st.session_state.page = "login"
-            st.rerun()
-
-    if st.button("⬅ Back to Login"):
-        st.session_state.page = "login"
-        st.rerun()
-
-
-# ---------------- MAIN APP ----------------
-def app_page():
-    st.title("RTGS Charges Calculator")
-
-    with st.sidebar:
-        st.success("Logged in")
-        if st.button("Logout"):
-            logout()
-
-    amount = st.number_input("Enter Amount", min_value=0.0, step=1000.0)
-
-    if st.button("Calculate"):
-        charge = calculate_charge(amount)
-        st.success(f"Charge: **Nu. {charge:.2f}**")
-
-    st.markdown("""
-    ---
-    **RTGS Charges Calculator**  
-    Developed by **Prakash Giri (KASH-BRO)**  
-    © 2025
-    """)
-
-
-# ---------------- ROUTER ----------------
-if st.session_state.page == "login":
-    login_page()
-
-elif st.session_state.page == "register":
-    register_page()
-
-elif st.session_state.page == "app" and st.session_state.logged_in:
-    app_page()
-
-else:
-    st.session_state.page = "login"
-    st.rerun()
+        if st.button("
