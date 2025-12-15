@@ -139,3 +139,12 @@ elif st.session_state.page == "app":
 else:
     st.session_state.page = "login"
     st.rerun()
+    
+    st.markdown("---")
+    st.markdown(
+        """
+        **RTGS Charges Calculator**  
+        Developed by **Prakash Giri (KASH-BRO)**  
+        © 2025
+        """
+    )
