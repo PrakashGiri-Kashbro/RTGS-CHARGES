@@ -43,13 +43,7 @@ def require_login():
         st.rerun()
         
 
-        st.markdown(
-            """
-            **RTGS Charges Calculator**  
-            Developed by **Prakash Giri (KASH-BRO)**  
-            © 2025
-            """
-        )
+       
 # ---------------- LOGIN PAGE ----------------
 def login_page():
     st.title("🏦 Bank of Bhutan")
@@ -73,6 +67,16 @@ def login_page():
         if st.button("New User Registration"):
             st.session_state.page = "register"
             st.rerun()
+            
+st.markdown("---")
+        st.markdown(
+            """
+            **RTGS Charges Calculator**  
+            Developed by **Prakash Giri (KASH-BRO)**  
+            © 2025
+            """
+        )
+
 
 # ---------------- REGISTRATION PAGE ----------------
 def register_page():
