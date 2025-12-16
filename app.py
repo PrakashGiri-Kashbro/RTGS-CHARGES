@@ -68,7 +68,7 @@ def login_page():
             st.session_state.page = "register"
             st.rerun()
             
-st.markdown("---")
+
         st.markdown(
             """
             **RTGS Charges Calculator**  
