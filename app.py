@@ -41,7 +41,8 @@ def require_login():
     if not st.session_state.logged_in:
         st.session_state.page = "login"
         st.rerun()
-st.markdown("---")
+        
+
         st.markdown(
             """
             **RTGS Charges Calculator**  
