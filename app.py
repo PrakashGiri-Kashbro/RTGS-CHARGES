@@ -45,7 +45,7 @@ def require_login():
 # ---------------- LOGIN PAGE ----------------
 def login_page():
     st.title("🏦 Bank of Bhutan")
-    st.subheader("RTGS Charges Calculator – Login")
+    st.subheader("RTGS Charges Calculator")
 
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
@@ -69,7 +69,7 @@ def login_page():
 # ---------------- REGISTRATION PAGE ----------------
 def register_page():
     st.title("📝 New User Registration")
-    st.info("One-time registration fee: **Nu. 100** (Demo only)")
+    st.info("One-time registration fee: **Nu. 100**")
 
     with st.form("register_form"):
         name = st.text_input("Full Name")
