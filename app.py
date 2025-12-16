@@ -41,7 +41,14 @@ def require_login():
     if not st.session_state.logged_in:
         st.session_state.page = "login"
         st.rerun()
-
+st.markdown("---")
+        st.markdown(
+            """
+            **RTGS Charges Calculator**  
+            Developed by **Prakash Giri (KASH-BRO)**  
+            © 2025
+            """
+        )
 # ---------------- LOGIN PAGE ----------------
 def login_page():
     st.title("🏦 Bank of Bhutan")
